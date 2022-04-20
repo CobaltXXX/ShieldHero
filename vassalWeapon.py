@@ -1,6 +1,5 @@
+from ctypes import sizeof
 from unicodedata import name
-
-from sqlalchemy import false, true
 
 
 class VassalWeapon:
@@ -10,6 +9,7 @@ class VassalWeapon:
         self.heroWeapon = False
         self.strengthMethod = "None"
         self.inventory = []
+        self.inventorySize = 10
         self.baseAD = baseDamage
         self.baseMD = baseMagicDamage
         self.currentAD = 0
@@ -30,6 +30,19 @@ class VassalWeapon:
 
     def getInventory(self):
         return self.inventory
+
+    def addToInventory(self, item):
+        if not(sizeof(self.inventory) <= sizeof(self.inventory) + 1):
+            self.inventory.append(item)
+        else:
+            print("addToInventoryError - Not enough space in inventory - vassalWeapon.py")
+
+    def getInventorySize(self):
+        return self.inventorySize
+
+    def setInventorySize(self, newSize):
+        self.inventorySize = newSize
+        
 
     def getStrengthMethod(self):
         return self.strengthMethod
@@ -66,11 +79,13 @@ class VassalWeapon:
         print("Wielder: " + self.wielder)
         print("Hero Weapon: " + str(self.heroWeapon))
         print("Inventory: " + str(self.inventory))
+        print("Inventory Size: " + str(self.inventorySize))
         print("Strengthening Method: " + self.strengthMethod)
         print("Base Attack Damage: " + str(self.baseAD))
         print("Base Magic Damage: " + str(self.baseMD))
         print("Current Attack Damage: " + str(self.currentAD))
         print("Current Magic Damage: " + str(self.currentMD))
+        
 
 
 #myWeapon = VassalWeapon("Sword", "Max")

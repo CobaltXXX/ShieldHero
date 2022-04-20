@@ -1,5 +1,4 @@
 from xml.etree.ElementTree import tostring
-from sqlalchemy import true
 from vassalWeapon import VassalWeapon
 
 class LegendaryWeapon(VassalWeapon):
