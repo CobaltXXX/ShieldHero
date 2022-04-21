@@ -1,96 +1,62 @@
-from ctypes import sizeof
-from unicodedata import name
-from item import Item
-from person import Person
+from weapon import Weapon
 
-
-class VassalWeapon:
-    def __init__(self, weaponType, wielder, baseDamage = 0, baseMagicDamage = 0, ):
-        self.weaponType = weaponType
-        self.wielder = wielder
-        self.heroWeapon = False
-        self.strengthMethod = "None"
+class VassalWeapon(Weapon):
+    def __init__(self, name, description, id, baseAttackDamage=0, baseMagicDamage=0, baseSpiritPower = 0):
+        super().__init__(name, description, id, baseAttackDamage, baseMagicDamage)
+        self.baseSP = baseSpiritPower
+        self.currentSP = self.baseSP
         self.inventory = []
         self.inventorySize = 10
-        self.baseAD = baseDamage
-        self.baseMD = baseMagicDamage
-        self.currentAD = 0
-        self.currentMD = 0
+        self.strengthMethod = []
+        self.heroWeapon = False
 
-        
-    def getWeaponType(self):
-        return self.weaponType 
 
-    def getWielder(self):
-        return self.wielder
+    def getBaseSP(self):
+        return self.baseSP
 
-    def isHeroWeapon(self):
-        return self.heroWeapon
+    def setBaseSP(self, newBaseSP):
+        self.baseSP = newBaseSP
+    
+    def getCurrentSP(self):
+        return self.currentSP
 
-    def isHeroWeaponString(self):
-        return str(self.heroWeapon)
-
+    def setCurrentSP(self, newCurrentSP):
+        self.currentSP = newCurrentSP
+    
     def getInventory(self):
         return self.inventory
-
-    def addToInventory(self, item):
-        if not(sizeof(self.inventory) <= sizeof(self.inventory) + 1):
-            self.inventory.append(item)
-        else:
-            print("addToInventoryError - Not enough space in inventory - vassalWeapon.py")
 
     def getInventorySize(self):
         return self.inventorySize
 
-    def setInventorySize(self, newSize):
-        self.inventorySize = newSize
-        
+    def addToInventory(self, item):
+        self.inventory.append(item)
+
+    def setInventorySize(self, newInventorySize):
+        self.inventorySize = newInventorySize
 
     def getStrengthMethod(self):
         return self.strengthMethod
 
-    def setStrengthMethod(self, newStrengthMethod):
-        self.strengthMethod = newStrengthMethod
+    def addStrengthMethod(self, newStrengthMethod):
+        self.strengthMethod.append(newStrengthMethod)
 
-    def getBaseAttackDamage(self):
-        return self.baseAD
+    def isHeroWeapon(self):
+        return self.heroWeapon
 
-    def setBaseAttackDamage(self, newBaseAD):
-        self.baseAD = newBaseAD
-
-    def getBaseMagicDamage(self):
-        return self.baseMD
-
-    def setBaseMagicDamage(self, newBaseMD):
-        self.baseMD = newBaseMD
-
-    def getCurrentAD(self):
-        return self.currentAD
-
-    def setCurrentAD(self, newCurrentAD):
-        self.currentAD = newCurrentAD
-
-    def getCurrentMD(self):
-        return self.currentMD
-
-    def setCurrentMD(self, newCurrentMD):
-        self.currentMD = newCurrentMD
-
-    def printStats(self):
-        print("Weapon: " + self.weaponType)
-        print("Wielder: " + self.wielder.name)
+    def printItemStats(self):
+        super().printItemStats()
+        print("Base Spirit Power: " + str(self.baseSP))
+        print("Current Spirit Power: " + str(self.currentSP))
+        print("Items in Inventory:")
+        for item in self.inventory:
+            print(item.getName())
+        print("Strengthening Methods:")
+        for meth in self.strengthMethod:
+            print(self.strengthMethod[meth])
         print("Hero Weapon: " + str(self.heroWeapon))
-        print("Inventory: " + str(self.inventory))
-        print("Inventory Size: " + str(self.inventorySize))
-        print("Strengthening Method: " + self.strengthMethod)
-        print("Base Attack Damage: " + str(self.baseAD))
-        print("Base Magic Damage: " + str(self.baseMD))
-        print("Current Attack Damage: " + str(self.currentAD))
-        print("Current Magic Damage: " + str(self.currentMD))
-        
 
-
-#myWeapon = VassalWeapon("Sword", "Max")
-#myWeapon.printStats()
+#scythe = VassalWeapon("Star Scythe", "The weapon of the star hero L'arc from Glass's world", 50, 25, 15)
+#scythe.printItemStats()
 
 

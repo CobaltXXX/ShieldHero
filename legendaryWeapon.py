@@ -1,26 +1,13 @@
 from xml.etree.ElementTree import tostring
 from vassalWeapon import VassalWeapon
-from person import Person
-from item import Item
+
 
 class LegendaryWeapon(VassalWeapon):
-    def __init__(self, weaponType, wielder, totalSP):
-        super().__init__(weaponType, wielder)
-        self.totalSP = totalSP
+    def __init__(self, name, description, id, baseAttackDamage=0, baseMagicDamage=0, baseSpiritPower=0):
+        super().__init__(name, description, id, baseAttackDamage, baseMagicDamage, baseSpiritPower)
         self.heroWeapon = True
 
-    def getTotalSP(self):
-        return self.totalSP
-
-    def setTotalSP(self, newTotalSP):
-        self.totalSP = newTotalSP
-
-    def printStats(self):
-        super().printStats()
-        print("Total SP: " + str(self.totalSP))
-        
-me = Person("Max", 100, 10501050, 3, 15, 100)
-myWeapon = LegendaryWeapon("Sword", me, 1000)
-myWeapon.printStats()
+#sword = LegendaryWeapon("Legendary Sword", "The sword of Ren, the sword hero in Raphtalia's world", 10010001, 100, 15, 75)
+#sword.printItemStats()
 
     

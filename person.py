@@ -1,4 +1,8 @@
+from legendaryWeapon import LegendaryWeapon
 from item import Item
+from wearableItem import WearableItem
+from weapon import Weapon
+from vassalWeapon import VassalWeapon
 
 class Person:
     def __init__(self, name, baseMP = 0, baseHP = 10, baseStrength = 10, baseDefense = 10, lvl=1):
@@ -33,6 +37,8 @@ class Person:
         self.equip17 = None   #neck
         self.equip18 = None   #earRight
         self.equip19 = None   #earLeft
+        self.equip20 = None   #WeaponRight
+        self.equip21 = None   #WeaponLeft
 
         
     def getName(self):
@@ -140,6 +146,65 @@ class Person:
             self.equip18 = item
         elif slot == 19:
             self.equip19 = item
+        elif slot == 20:
+            self.equip20 = item
+        elif slot == 21:
+            self.equip21 = item
         else:
             print("equipItemFailiure - Non-valid Equip Slot - person.py")
+
+    def getEquipedItem(self, slot):
+        if slot == 1:
+            return self.equip1
+        elif slot == 2:
+            return self.equip2
+        elif slot == 3:
+            return self.equip3
+        elif slot == 4:
+            return self.equip4
+        elif slot == 5:
+            return self.equip5
+        elif slot == 6:
+            return self.equip6
+        elif slot == 7:
+            return self.equip7
+        elif slot == 8:
+            return self.equip8
+        elif slot == 9:
+            return self.equip9
+        elif slot == 10:
+            return self.equip10
+        elif slot == 11:
+            return self.equip11
+        elif slot == 12:
+            return self.equip12
+        elif slot == 13:
+            return self.equip13
+        elif slot == 14:
+            return self.equip14
+        elif slot == 15:
+            return self.equip15
+        elif slot == 16:
+            return self.equip16
+        elif slot == 17:
+            return self.equip17
+        elif slot == 18:
+            return self.equip18
+        elif slot == 19:
+            return self.equip19
+        elif slot == 20:
+            return self.equip20
+        elif slot == 21:
+            return self.equip21
+        else:
+            print("equipItemFailiure - Non-valid Equip Slot - person.py")
+
+sword = LegendaryWeapon("Legendary Sword", "The sword of Ren, the sword hero in Raphtalia's world", 10010001, 100, 15, 75)
+sword.printItemStats()
+chickenstick = Weapon("Chicken Stick", "Its a chicken on a stick", 6969, 1, 100000000)
+chickenstick.printItemStats()
+
+me = Person("Max", 420, 69, 100, 8999, 1001)
+me.equipItem(sword, 20)
+print(me.getEquipedItem(20))
     
