@@ -1,3 +1,5 @@
+from item import Item
+
 class Person:
     def __init__(self, name, baseMP = 0, baseHP = 10, baseStrength = 10, baseDefense = 10, lvl=1):
         self.name = name
@@ -99,7 +101,6 @@ class Person:
     def setLevel(self, newlvl):
         self.lvl = newlvl
     
-
     def equipItem(self, item, slot):
         if slot == 1:
             self.equip1 = item
