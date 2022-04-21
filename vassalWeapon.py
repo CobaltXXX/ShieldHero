@@ -1,5 +1,7 @@
 from ctypes import sizeof
 from unicodedata import name
+from item import Item
+from person import Person
 
 
 class VassalWeapon:
@@ -76,7 +78,7 @@ class VassalWeapon:
 
     def printStats(self):
         print("Weapon: " + self.weaponType)
-        print("Wielder: " + self.wielder)
+        print("Wielder: " + self.wielder.name)
         print("Hero Weapon: " + str(self.heroWeapon))
         print("Inventory: " + str(self.inventory))
         print("Inventory Size: " + str(self.inventorySize))

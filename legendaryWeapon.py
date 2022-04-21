@@ -1,5 +1,7 @@
 from xml.etree.ElementTree import tostring
 from vassalWeapon import VassalWeapon
+from person import Person
+from item import Item
 
 class LegendaryWeapon(VassalWeapon):
     def __init__(self, weaponType, wielder, totalSP):
@@ -17,7 +19,8 @@ class LegendaryWeapon(VassalWeapon):
         super().printStats()
         print("Total SP: " + str(self.totalSP))
         
-#myWeapon = LegendaryWeapon("Sword", "Max", 1000)
-#myWeapon.printStats()
+me = Person("Max", 100, 10501050, 3, 15, 100)
+myWeapon = LegendaryWeapon("Sword", me, 1000)
+myWeapon.printStats()
 
     
