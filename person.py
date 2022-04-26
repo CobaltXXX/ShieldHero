@@ -195,11 +195,13 @@ class Person:
         else:
             print("equipItemFailiure - Non-valid Equip Slot - person.py")
 
-sword = Item.legendaryWeapon("Legendary Sword", "Ren's sword", 69696969, 10, 11, 12)
-sword.printItemStats()
+stick = Item("Stick", "It's just a stick", 10100101)
+scythe = Item.vassalWeapon("Vassal Sycthe", "bruh", 82896314)
+me = Person("Max")
 
-ren = Person("Ren", 50, 505, 502, 3, 84)
-ren.equipItem(sword, 20)
-ren.getEquipedItem(20).printItemStats()
+me.equipItem(scythe, 20)
+me.getEquipedItem(20).addToInventory(stick)
+scythe.printItemStats()
+me.getEquipedItem(20).printItemStats()
 
     

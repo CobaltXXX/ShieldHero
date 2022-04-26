@@ -36,10 +36,6 @@ class Item:
         print("Description: " + str(self.desc))
         print("ID Number: " + str(self.id))
        
-
-#standardArmor = Item("Armor", "secret aromor\n bruh momento")
-#standardArmor.printItemStats()
-
 class Weapon(Item):
     def __init__(self, name, description, id, baseAttackDamage = 0, baseMagicDamage = 0):
         super().__init__(name, description, id)
@@ -79,16 +75,12 @@ class Weapon(Item):
         print("Base Magic Damage: " + str(self.baseMD))
         print("Current Magic Damage: " + str(self.currentMD))
 
-
-#sword = Weapon("Blade", "Standard Blade", 10, 2)
-#sword.printItemStats()
-
 class VassalWeapon(Weapon):
     def __init__(self, name, description, id, baseAttackDamage=0, baseMagicDamage=0, baseSpiritPower = 0):
         super().__init__(name, description, id, baseAttackDamage, baseMagicDamage)
         self.baseSP = baseSpiritPower
         self.currentSP = self.baseSP
-        self.inventory = []
+        self.inventory = {}
         self.inventorySize = 10
         self.strengthMethod = []
         self.heroWeapon = False
@@ -113,7 +105,11 @@ class VassalWeapon(Weapon):
         return self.inventorySize
 
     def addToInventory(self, item):
-        self.inventory.append(item)
+        if len(self.inventory) < self.inventorySize:
+            self.inventory[item.getID()] = item
+        else:
+            print("Not enough space in inventory")
+        
 
     def setInventorySize(self, newInventorySize):
         self.inventorySize = newInventorySize
@@ -132,16 +128,11 @@ class VassalWeapon(Weapon):
         print("Base Spirit Power: " + str(self.baseSP))
         print("Current Spirit Power: " + str(self.currentSP))
         print("Items in Inventory:")
-        for item in self.inventory:
-            print(item.getName())
+        self.getInventory()
         print("Strengthening Methods:")
         for meth in self.strengthMethod:
             print(self.strengthMethod[meth])
         print("Hero Weapon: " + str(self.heroWeapon))
-
-#scythe = VassalWeapon("Star Scythe", "The weapon of the star hero L'arc from Glass's world", 50, 25, 15)
-#scythe.printItemStats()
-
 
 class LegendaryWeapon(VassalWeapon):
     def __init__(self, name, description, id, baseAttackDamage=0, baseMagicDamage=0, baseSpiritPower=0):
