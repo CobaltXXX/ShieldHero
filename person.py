@@ -1,8 +1,4 @@
-from legendaryWeapon import LegendaryWeapon
 from item import Item
-from wearableItem import WearableItem
-from weapon import Weapon
-from vassalWeapon import VassalWeapon
 
 class Person:
     def __init__(self, name, baseMP = 0, baseHP = 10, baseStrength = 10, baseDefense = 10, lvl=1):
@@ -199,12 +195,11 @@ class Person:
         else:
             print("equipItemFailiure - Non-valid Equip Slot - person.py")
 
-sword = LegendaryWeapon("Legendary Sword", "The sword of Ren, the sword hero in Raphtalia's world", 10010001, 100, 15, 75)
+sword = Item.legendaryWeapon("Legendary Sword", "Ren's sword", 69696969, 10, 11, 12)
 sword.printItemStats()
-chickenstick = Weapon("Chicken Stick", "Its a chicken on a stick", 6969, 1, 100000000)
-chickenstick.printItemStats()
 
-me = Person("Max", 420, 69, 100, 8999, 1001)
-me.equipItem(sword, 20)
-print(me.getEquipedItem(20))
+ren = Person("Ren", 50, 505, 502, 3, 84)
+ren.equipItem(sword, 20)
+ren.getEquipedItem(20).printItemStats()
+
     
